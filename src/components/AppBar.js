@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import AuthNav from "./AuthNav";
-import UserMenu from "./UserMenu/UserMenu";
+import UserMenu from "./UserMenu";
 import { authSelectors } from "../redux/auth";
 
 const styles = {
