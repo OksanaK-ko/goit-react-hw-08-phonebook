@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authOperations } from "../redux/auth";
+import { Button } from "react-bootstrap";
 
 const styles = {
   form: {
     width: 320,
+    margin: "auto",
+  },
+  header: {
+    textAlign: "center",
   },
   label: {
     display: "flex",
     flexDirection: "column",
     marginBottom: 15,
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 };
 
@@ -36,7 +43,7 @@ class LoginView extends Component {
 
     return (
       <div>
-        <h1>Страница логина</h1>
+        <h1 style={styles.header}>Страница логина</h1>
 
         <form
           onSubmit={this.handleSubmit}
@@ -63,7 +70,9 @@ class LoginView extends Component {
             />
           </label>
 
-          <button type="submit">Войти</button>
+          <Button variant="secondary" size="sm" block type="submit">
+            Войти
+          </Button>
         </form>
       </div>
     );

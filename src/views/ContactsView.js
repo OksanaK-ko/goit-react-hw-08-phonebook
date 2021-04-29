@@ -21,7 +21,7 @@ const styles = {
     fontSize: "42",
     fontWeight: "700",
     margin: "0 0 15 0",
-    color: "rgb(80, 80, 204)",
+    color: "#007bff",
   },
 };
 

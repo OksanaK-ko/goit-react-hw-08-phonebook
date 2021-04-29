@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
 import defaultAvatar from "./default-avatar.png";
+import { Button } from "react-bootstrap";
 
 const styles = {
   container: {
@@ -13,7 +14,7 @@ const styles = {
   },
   name: {
     fontWeight: 700,
-    marginRight: 12,
+    marginRight: 14,
   },
 };
 
@@ -21,9 +22,9 @@ const UserMenu = ({ avatar, name, onLogout }) => (
   <div style={styles.container}>
     <img src={avatar} alt="" width="32" style={styles.avatar} />
     <span style={styles.name}>Welcome, {name}</span>
-    <button type="button" onClick={onLogout}>
+    <Button variant="primary" size="sm" onClick={onLogout}>
       Выйти
-    </button>
+    </Button>
   </div>
 );
 const mapStateToProps = (state) => ({

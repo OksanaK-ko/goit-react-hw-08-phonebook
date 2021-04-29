@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { contactsOperations, contactsSelectors } from "../../redux/contacts";
 import s from "./Contacts.module.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Button } from "react-bootstrap";
 
 const Contacts = ({ contacts, onDeleteContact }) => (
   <TransitionGroup component="ul" className={s.ContactList}>
@@ -11,9 +12,16 @@ const Contacts = ({ contacts, onDeleteContact }) => (
       <CSSTransition key={id} timeout={250} classNames={s}>
         <li className={s.ContactList_item}>
           {name}: {number}
-          <button className={s.button} onClick={() => onDeleteContact(id)}>
+          {/* <button className={s.button} onClick={() => onDeleteContact(id)}>
             Delete
-          </button>
+          </button> */}
+          <Button
+            variant="danger"
+            size="sm"
+            onClick={() => onDeleteContact(id)}
+          >
+            Delete
+          </Button>
         </li>
       </CSSTransition>
     ))}

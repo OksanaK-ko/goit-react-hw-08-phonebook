@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { contactsOperations, contactsSelectors } from "../../redux/contacts";
 import { CSSTransition } from "react-transition-group";
-import Alert from "../Alert/Alert";
 import "../css/animation.css";
 import s from "./ContactForm.module.css";
+import { Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 class ContactForm extends Component {
   state = {
@@ -62,7 +63,7 @@ class ContactForm extends Component {
           timeout={250}
           unmountOnExit
         >
-          <Alert />
+          <Alert variant="warning">This contact exists already!</Alert>
         </CSSTransition>
         <form onSubmit={this.handleSubmit}>
           <div className={s.form}>
@@ -88,9 +89,9 @@ class ContactForm extends Component {
                 id={this.numberInputId}
               />
             </label>
-            <button className={s.button} type="submit">
+            <Button variant="secondary" size="lg" block type="submit">
               Add contact
-            </button>
+            </Button>
             {this.props.isLoadingContacts && <h1>Loading...</h1>}
           </div>
         </form>

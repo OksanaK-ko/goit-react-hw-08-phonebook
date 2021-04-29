@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authOperations } from "../redux/auth";
+import { Button } from "react-bootstrap";
 
 const styles = {
   form: {
     width: 320,
+    margin: "auto",
+  },
+  header: {
+    textAlign: "center",
   },
   label: {
     display: "flex",
@@ -37,7 +42,7 @@ class RegisterView extends Component {
 
     return (
       <div>
-        <h1>Страница регистрации</h1>
+        <h1 style={styles.header}>Страница регистрации</h1>
 
         <form
           onSubmit={this.handleSubmit}
@@ -74,7 +79,9 @@ class RegisterView extends Component {
             />
           </label>
 
-          <button type="submit">Зарегистрироваться</button>
+          <Button variant="secondary" size="sm" block type="submit">
+            Зарегистрироваться
+          </Button>
         </form>
       </div>
     );
