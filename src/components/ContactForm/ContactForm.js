@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { contactsOperations, contactsSelectors } from "../../redux/contacts";
-import { CSSTransition } from "react-transition-group";
-import "../css/animation.css";
-import s from "./ContactForm.module.css";
-import { Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
+import { CSSTransition } from 'react-transition-group';
+import '../../css/animation.css';
+import s from './ContactForm.module.css';
+import { Alert } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class ContactForm extends Component {
   state = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
     error: false,
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({
       [name]: value,
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { contacts } = this.props;
     if (
       contacts.find(
-        (item) =>
+        item =>
           item.name.toLowerCase() ===
-          e.currentTarget.elements[0].value.toLowerCase()
+          e.currentTarget.elements[0].value.toLowerCase(),
       )
     ) {
       this.setState(() => {
@@ -51,7 +51,7 @@ class ContactForm extends Component {
     this.reset();
   };
   reset = () => {
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   };
   render() {
     return (
@@ -101,7 +101,7 @@ class ContactForm extends Component {
 }
 
 ContactForm.defaultProps = {
-  type: "text",
+  type: 'text',
   name: null,
 };
 
@@ -110,13 +110,13 @@ ContactForm.propTypes = {
   name: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   contacts: contactsSelectors.getVisibleContacts(state),
   isLoadingContacts: contactsSelectors.getLoading(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: (data) => dispatch(contactsOperations.addContact(data)),
+const mapDispatchToProps = dispatch => ({
+  onSubmit: data => dispatch(contactsOperations.addContact(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
